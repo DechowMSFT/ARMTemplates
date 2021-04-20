@@ -12,3 +12,15 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'CTSDemoConnection'
+    subscriptionId: '75e14b52-9b75-415d-ac7b-7ae5da30d3fe'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'CTSINSIPRODRG01-FO'
+    location: 'Southeast Asia'
+    templateLocation: 'Linked artifact'
+    csmFile: 'azuredeploy.json'
+    deploymentMode: 'Incremental'
+  
